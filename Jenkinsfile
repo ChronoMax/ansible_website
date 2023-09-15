@@ -24,7 +24,7 @@ pipeline {
                 '''
             }
         }
-        stage('Deliver') {
+        stage('Deploy') {
             steps {
                 echo 'Deliver....'
                 sh '''
