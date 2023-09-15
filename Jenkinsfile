@@ -9,6 +9,20 @@ pipeline {
             }
         }
 
+        stage('Delete Existing Files') {
+            steps {
+                script {
+                    def serverHost = '172.16.1.4'
+                    def serverUser = 'student'
+
+                    // Delete existing HTML and CSS files
+                    sshagent(['ssh-creds']) {
+                        sh "ssh ${serverUser}@${serverHost} 'rm -rf /var/www/html/*'"
+                    }
+                }
+            }
+        }
+
         stage('Deploy to Ubuntu Server') {
             steps {
                 script {
