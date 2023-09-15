@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Define your Ubuntu server details
-                    def serverHost = '172.16.1.4'
+                    def serverHost = '172.16.1.3'
                     def serverUser = 'student'
                     def remotePath = '/var/www/html/'
 
