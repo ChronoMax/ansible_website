@@ -17,7 +17,7 @@ pipeline {
 
                     // Delete existing HTML and CSS files
                     sshagent(['ssh_creds']) {
-                        sh "ssh ${serverUser}@${serverHost} 'sudo rm -rf /var/www/html/*'"
+                        sh "ssh -v ${serverUser}@${serverHost} sudo rm -rf /var/www/html/*"
                     }
                 }
             }
