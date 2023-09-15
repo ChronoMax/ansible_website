@@ -18,7 +18,7 @@ pipeline {
                     def remotePath = '/var/www/html/'
 
                     // Copy the HTML and CSS files to the server
-                    sshagent(['ssh-creds']) {
+                    sshagent(['ssh_creds']) {
                         sh "scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
                     }
                 }
