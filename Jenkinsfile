@@ -33,7 +33,7 @@ pipeline {
 
                     // Copy the HTML and CSS files to the server
                     sshagent(['ssh_creds']) {
-                        sh "sudo scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
+                        sh "scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
                     }
                 }
             }
