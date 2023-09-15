@@ -29,7 +29,7 @@ pipeline {
             steps {
                 // Deploy the website to the Ubuntu server
                 echo "Deploying website..."
-                sshagent(['your-ssh-credentials-id']) {
+                sshagent(['ssh_creds']) {
                     // Use SSH to copy the website files to the server
                     sh "scp -r ./* student@172.16.1.4:/var/www/html/"
                 }
