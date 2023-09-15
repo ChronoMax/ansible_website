@@ -9,40 +9,20 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Deploy to Ubuntu Server') {
             steps {
-                // Perform any build steps if necessary (e.g., minifying CSS or JS)
-                echo "Building website..."
-                // Add your build commands here
-            }
-        }
+                script {
+                    // Define your Ubuntu server details
+                    def serverHost = '172.16.1.4'
+                    def serverUser = 'student'
+                    def remotePath = '/var/www/html/'
 
-        stage('Test') {
-            steps {
-                // Perform any tests on your website (e.g., link checking)
-                echo "Testing website..."
-                // Add your test commands here
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploy the website to the Ubuntu server
-                echo "Deploying website..."
-                sshagent(['ssh_creds']) {
-                    echo "Use SSH to copy the website files to the server"
-                    sh "scp -r ./* student@172.16.1.4:/var/www/html/"
+                    // Copy the HTML and CSS files to the server
+                    sshagent(['ssh-creds']) {
+                        sh "scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
+                    }
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            echo "Website deployed successfully!"
-        }
-        failure {
-            echo "Website deployment failed."
         }
     }
 }
