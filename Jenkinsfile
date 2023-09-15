@@ -17,7 +17,7 @@ pipeline {
 
                     // Delete existing HTML and CSS files
                     sshagent(['ssh_creds']) {
-                        sh "ssh ${serverUser}@${serverHost} 'rm -rf /var/www/html/*'"
+                        sh "ssh ${serverUser}@${serverHost} 'sudo rm -rf /var/www/html/*'"
                     }
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
 
                     // Copy the HTML and CSS files to the server
                     sshagent(['ssh_creds']) {
-                        sh "scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
+                        sh "sudo scp -r ./* ${serverUser}@${serverHost}:${remotePath}"
                     }
                 }
             }
