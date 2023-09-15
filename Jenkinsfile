@@ -16,7 +16,7 @@ pipeline {
                     def serverUser = 'student'
 
                     // Delete existing HTML and CSS files
-                    sshagent(['ssh-creds']) {
+                    sshagent(['ssh_creds']) {
                         sh "ssh ${serverUser}@${serverHost} 'rm -rf /var/www/html/*'"
                     }
                 }
