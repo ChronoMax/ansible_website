@@ -12,7 +12,7 @@ pipeline {
         stage('Delete Existing Files') {
             steps {
                 script {
-                    def serverHost = '172.16.1.4'
+                    def serverHost = '172.16.1.6'
                     def serverUser = 'student'
 
                     // Delete existing HTML and CSS files
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Define your Ubuntu server details
-                    def serverHost = '172.16.1.4'
+                    def serverHost = '172.16.1.6'
                     def serverUser = 'student'
                     def remotePath = '/var/www/html/'
 
